@@ -1070,7 +1070,8 @@ Network::Netresult Network::get_scored_moves_internal(const BoardHistory& pos, N
     std::vector<float> winrate_out(1);
     // Data layout is input_data[(c * height + h) * width + w]
     input_data.reserve(get_input_channels() * width * height);
-    for (int c = 0; c < get_input_channels() - 3; ++c) {
+    assert(get_input_channels() >= 3);
+    for (unsigned int c = 0; c < get_input_channels() - 3; ++c) {
         for (int i = 0; i < 64; ++i) {
             input_data.emplace_back(net_t(planes.bit[c][i]));
         }

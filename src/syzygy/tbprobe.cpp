@@ -1464,7 +1464,7 @@ bool Tablebases::root_probe(Position& pos, const std::vector<UCTNode::node_ptr_t
     // Check whether a position was repeated since the last zeroing move.
     bool rep = pos.has_repeated();
 
-    int dtz, bound = true ? 900 : 1;
+    int dtz;
     std::vector<int> ranks;
     ranks.reserve(rootMoves.size());
     int best_rank = -1000;
